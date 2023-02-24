@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:random_generator_app/number_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,6 +33,7 @@ class _RootPageState extends State<RootPage> {
       appBar: AppBar(
         title: const Text('Random Generator'),
       ),
+      body: const NumberPage(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           debugPrint('FAB');
