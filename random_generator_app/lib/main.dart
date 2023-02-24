@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:random_generator_app/number_page.dart';
+import 'package:random_generator_app/decision_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,19 +28,14 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   int currentPage = 0;
+  List<Widget> pages = const [NumberPage(), DecisionPage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Random Generator'),
       ),
-      body: const NumberPage(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          debugPrint('FAB');
-        },
-        child: const Icon(Icons.add),
-      ),
+      body: pages[currentPage],
       bottomNavigationBar: NavigationBar(
         destinations: const [
           NavigationDestination(icon: Icon(Icons.numbers), label: 'Number'),
