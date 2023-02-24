@@ -1,17 +1,39 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
-class NumberPage extends StatelessWidget {
+class NumberPage extends StatefulWidget {
   const NumberPage({super.key});
 
   @override
+  State<NumberPage> createState() => _NumberPageState();
+}
+
+class _NumberPageState extends State<NumberPage> {
+  String randomNumber = 'X';
+  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text(
-          'Hello',
-          style: TextStyle(color: Colors.blue, fontSize: 20),
-        ),
-      ),
+          child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            '$randomNumber',
+            style: const TextStyle(fontSize: 30),
+          ),
+          Container(
+            padding: const EdgeInsets.all(20),
+            child: ElevatedButton(
+              child: const Text('Randomise'),
+              onPressed: () {
+                setState(() {
+                  randomNumber = Random().nextInt(7).toString();
+                });
+              },
+            ),
+          )
+        ],
+      )),
     );
   }
 }
