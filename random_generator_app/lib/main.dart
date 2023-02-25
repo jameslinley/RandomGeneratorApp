@@ -36,7 +36,7 @@ class _RootPageState extends State<RootPage> {
       appBar: AppBar(
         title: const Text('Random Generator'),
       ),
-      body: pages[currentPage],
+      body: IndexedStack(index: currentPage, children: pages),
       bottomNavigationBar: NavigationBar(
         destinations: const [
           NavigationDestination(icon: Icon(Icons.numbers), label: 'Number'),
@@ -52,3 +52,18 @@ class _RootPageState extends State<RootPage> {
     );
   }
 }
+
+
+// body: pages[currentPage],
+//       bottomNavigationBar: NavigationBar(
+//         destinations: const [
+//           NavigationDestination(icon: Icon(Icons.numbers), label: 'Number'),
+//           NavigationDestination(icon: Icon(Icons.scale), label: 'Decisions'),
+//         ],
+//         onDestinationSelected: (int index) {
+//           setState(() {
+//             currentPage = index;
+//           });
+//         },
+//         selectedIndex: currentPage,
+//       ),
