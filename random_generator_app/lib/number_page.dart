@@ -13,10 +13,9 @@ class _NumberPageState extends State<NumberPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: Column(
-        mainAxisSize: MainAxisSize.min,
+      body: Column(
         children: [
+          const SizedBox(height: 10),
           Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
@@ -48,15 +47,19 @@ class _NumberPageState extends State<NumberPage> {
               ),
             ),
           ),
+          const SizedBox(
+            height: 2,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ConstrainedBox(
-                constraints: BoxConstraints.tightFor(width: 100, height: 40),
+                constraints:
+                    const BoxConstraints.tightFor(width: 100, height: 40),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    padding: EdgeInsets.all(0.5),
+                    backgroundColor: Colors.blue,
+                    padding: const EdgeInsets.all(0.5),
                   ),
                   child: const Text('Randomise'),
                   onPressed: () {
@@ -67,11 +70,12 @@ class _NumberPageState extends State<NumberPage> {
                 ),
               ),
               ConstrainedBox(
-                constraints: BoxConstraints.tightFor(width: 100, height: 40),
+                constraints:
+                    const BoxConstraints.tightFor(width: 100, height: 40),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    padding: EdgeInsets.all(0.5),
+                    backgroundColor: Colors.blue,
+                    padding: const EdgeInsets.all(0.5),
                   ),
                   child: const Text('Refresh'),
                   onPressed: () {
@@ -91,7 +95,7 @@ class _NumberPageState extends State<NumberPage> {
             style: const TextStyle(fontSize: 50),
           ),
         ],
-      )),
+      ),
     );
   }
 }

@@ -52,18 +52,3 @@ class _RootPageState extends State<RootPage> {
     );
   }
 }
-
-
-// body: pages[currentPage],
-//       bottomNavigationBar: NavigationBar(
-//         destinations: const [
-//           NavigationDestination(icon: Icon(Icons.numbers), label: 'Number'),
-//           NavigationDestination(icon: Icon(Icons.scale), label: 'Decisions'),
-//         ],
-//         onDestinationSelected: (int index) {
-//           setState(() {
-//             currentPage = index;
-//           });
-//         },
-//         selectedIndex: currentPage,
-//       ),
