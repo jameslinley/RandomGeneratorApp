@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
 class DecisionPage extends StatelessWidget {
@@ -5,13 +6,19 @@ class DecisionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'COMING SOON',
-          style: TextStyle(color: Colors.blueGrey, fontSize: 40),
-        ),
-      ),
-    );
+    return Center(
+        child: AnimatedTextKit(
+      animatedTexts: [
+        WavyAnimatedText('COMING SOON',
+            textStyle: const TextStyle(
+              color: Colors.blueGrey,
+              fontSize: 30,
+            )),
+      ],
+      repeatForever: true,
+      onTap: () {
+        print("Tap Event");
+      },
+    ));
   }
 }

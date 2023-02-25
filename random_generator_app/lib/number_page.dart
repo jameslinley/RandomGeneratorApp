@@ -18,7 +18,7 @@ class _NumberPageState extends State<NumberPage> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            '$randomNumber',
+            randomNumber,
             style: const TextStyle(fontSize: 30),
           ),
           Container(
