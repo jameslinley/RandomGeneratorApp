@@ -16,9 +16,6 @@ class DecisionPage extends StatelessWidget {
             )),
       ],
       repeatForever: true,
-      onTap: () {
-        print("Tap Event");
-      },
     ));
   }
 }
