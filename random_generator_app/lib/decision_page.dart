@@ -17,7 +17,7 @@ class _DecisionPageState extends State<DecisionPage> {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
@@ -33,9 +33,15 @@ class _DecisionPageState extends State<DecisionPage> {
             padding: const EdgeInsets.all(5),
             child: TextField(
               controller: decisionInput,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Enter a decision',
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    decisionInput.clear();
+                  },
+                  icon: Icon(Icons.clear),
+                ),
               ),
             ),
           ),
