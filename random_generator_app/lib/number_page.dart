@@ -12,6 +12,8 @@ class _NumberPageState extends State<NumberPage> {
   String randomNumber = 'X';
   TextEditingController minValue = TextEditingController();
   TextEditingController maxValue = TextEditingController();
+  String minValueInput = '', maxValueInput = '';
+  int minValueInputInt = 0, maxValueInputInt = 0, randomInRange = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,28 +37,39 @@ class _NumberPageState extends State<NumberPage> {
             padding: const EdgeInsets.all(5),
             child: TextField(
               controller: minValue,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
                 labelText: 'min',
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    minValue.clear();
+                  },
+                  icon: const Icon(Icons.clear),
+                ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 1,
           ),
           Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
             child: TextField(
               controller: maxValue,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
                 labelText: 'max',
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    maxValue.clear();
+                  },
+                  icon: const Icon(Icons.clear),
+                ),
               ),
             ),
           ),
           const SizedBox(
-            height: 2,
+            height: 15,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -72,7 +85,17 @@ class _NumberPageState extends State<NumberPage> {
                   child: const Text('Randomise'),
                   onPressed: () {
                     setState(() {
-                      randomNumber = Random().nextInt(7).toString();
+                      minValueInput = minValue.text.toString();
+                      maxValueInput = maxValue.text.toString();
+
+                      minValueInputInt = int.parse(minValueInput);
+                      maxValueInputInt = int.parse(maxValueInput);
+
+                      randomInRange = minValueInputInt +
+                          Random().nextInt(
+                              (maxValueInputInt + 1) - minValueInputInt);
+
+                      randomNumber = randomInRange.toString();
                     });
                   },
                 ),
