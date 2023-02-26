@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:random_generator_app/number_page.dart';
 import 'package:random_generator_app/decision_page.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 
 void main() {
   runApp(const MyApp());
