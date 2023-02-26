@@ -10,38 +10,46 @@ class NumberPage extends StatefulWidget {
 
 class _NumberPageState extends State<NumberPage> {
   String randomNumber = 'X';
+  TextEditingController minValue = TextEditingController();
+  TextEditingController maxValue = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          const SizedBox(height: 10),
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: const Text(
-              'Enter range',
-              style: TextStyle(fontSize: 20),
-            ),
+          const SizedBox(height: 15),
+          Text(
+            randomNumber,
+            style: const TextStyle(fontSize: 50),
           ),
+          // Container(
+          //   margin: const EdgeInsets.all(5),
+          //   padding: const EdgeInsets.all(5),
+          //   child: const Text(
+          //     'Enter range',
+          //     style: TextStyle(fontSize: 20),
+          //   ),
+          // ),
           Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
-            child: const TextField(
-              decoration: InputDecoration(
+            child: TextField(
+              controller: minValue,
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'min',
               ),
             ),
           ),
           const SizedBox(
-            height: 2,
+            height: 1,
           ),
           Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
-            child: const TextField(
-              decoration: InputDecoration(
+            child: TextField(
+              controller: maxValue,
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'max',
               ),
@@ -80,7 +88,9 @@ class _NumberPageState extends State<NumberPage> {
                   child: const Text('Refresh'),
                   onPressed: () {
                     setState(() {
-                      //
+                      minValue.clear();
+                      maxValue.clear();
+                      randomNumber = 'X';
                     });
                   },
                 ),
@@ -89,10 +99,6 @@ class _NumberPageState extends State<NumberPage> {
           ),
           const SizedBox(
             height: 10,
-          ),
-          Text(
-            randomNumber,
-            style: const TextStyle(fontSize: 50),
           ),
         ],
       ),
