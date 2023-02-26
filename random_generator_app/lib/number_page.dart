@@ -24,14 +24,6 @@ class _NumberPageState extends State<NumberPage> {
             randomNumber,
             style: const TextStyle(fontSize: 50),
           ),
-          // Container(
-          //   margin: const EdgeInsets.all(5),
-          //   padding: const EdgeInsets.all(5),
-          //   child: const Text(
-          //     'Enter range',
-          //     style: TextStyle(fontSize: 20),
-          //   ),
-          // ),
           Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
