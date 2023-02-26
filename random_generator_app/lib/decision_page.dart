@@ -15,6 +15,7 @@ class _DecisionPageState extends State<DecisionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Column(
         children: [
           const SizedBox(
@@ -45,16 +46,29 @@ class _DecisionPageState extends State<DecisionPage> {
               ),
             ),
           ),
-          ElevatedButton(
-            onPressed: () {
-              setState(
-                () {
-                  decisionTxt = decisionInput.text;
-                  decisionInput.clear();
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  setState(
+                    () {
+                      decisionTxt = decisionInput.text;
+                      decisionInput.clear();
+                    },
+                  );
                 },
-              );
-            },
-            child: const Text('Make decision'),
+                child: const Text('Make decision'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  setState(
+                    () {},
+                  );
+                },
+                child: const Text('Clear'),
+              ),
+            ],
           ),
           const Divider(
             color: Colors.black,
