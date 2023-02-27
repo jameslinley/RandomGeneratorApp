@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import './decision_item.dart';
 
 class DecisionPage extends StatefulWidget {
   const DecisionPage({super.key});
@@ -66,14 +67,17 @@ class _DecisionPageState extends State<DecisionPage> {
                     () {},
                   );
                 },
-                child: const Text('Clear'),
+                child: const Text('Clear all'),
               ),
             ],
           ),
           const Divider(
             color: Colors.black,
             height: 20,
-          )
+          ),
+          // List of inputted decisions
+          DecisionItem(),
+          DecisionItem(),
         ],
       ),
     );
