@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class AddOptionButton extends StatelessWidget {
+class MyButton extends StatelessWidget {
   final String text;
   VoidCallback onPressed;
-  AddOptionButton({super.key, required this.text, required this.onPressed});
+  MyButton({super.key, required this.text, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

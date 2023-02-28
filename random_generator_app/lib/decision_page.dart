@@ -12,34 +12,32 @@ class DecisionPage extends StatefulWidget {
 }
 
 class _DecisionPageState extends State<DecisionPage> {
-  TextEditingController decisionInput = TextEditingController();
   String decisionTxt = 'Your decision is ...';
-
-  void saveNewOption() {
-    setState(() {
-      decisionTxt = decisionInput.text;
-      decisionInput.clear();
-    });
-  }
-
-  void clearAll() {
-    setState(() {
-      decisionTxt = 'Your decision is ...';
-      decisionInput.clear();
-    });
-  }
+  final _controller = TextEditingController();
 
   List optionsList = [
     ["Pizza"],
     ["Chinese"],
   ];
 
+  void saveNewOption() {
+    setState(() {
+      optionsList.add([_controller.text]);
+      _controller.clear();
+    });
+    Navigator.of(context).pop();
+  }
+
   //create new option
   void createNewOption() {
     showDialog(
       context: context,
       builder: (context) {
-        return DialogBox();
+        return DialogBox(
+          controller: _controller,
+          onSave: saveNewOption,
+          onCancel: () => Navigator.of(context).pop(),
+        );
       },
     );
   }
@@ -117,8 +115,8 @@ class _DecisionPageState extends State<DecisionPage> {
           //       onPressed: () {
           //         setState(
           //           () {
-          //             decisionTxt = decisionInput.text;
-          //             decisionInput.clear();
+          //             decisionTxt = _controller.text;
+          //             _controller.clear();
           //           },
           //         );
           //       },
@@ -139,13 +137,13 @@ class _DecisionPageState extends State<DecisionPage> {
 //   margin: const EdgeInsets.all(5),
 //   padding: const EdgeInsets.all(5),
 //   child: TextField(
-//     controller: decisionInput,
+//     controller: _controller,
 //     decoration: InputDecoration(
 //       border: const OutlineInputBorder(),
 //       labelText: 'Enter a decision',
 //       suffixIcon: IconButton(
 //         onPressed: () {
-//           decisionInput.clear();
+//           _controller.clear();
 //         },
 //         icon: const Icon(Icons.clear),
 //       ),
