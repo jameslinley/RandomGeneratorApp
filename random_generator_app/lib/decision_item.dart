@@ -13,18 +13,11 @@ class DecisionItem extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        tileColor: Color.fromARGB(255, 207, 239, 170),
+        tileColor: Color.fromARGB(98, 34, 100, 151),
         title: Text(
           optionText,
           textAlign: TextAlign.left,
           style: TextStyle(fontSize: 20, color: Colors.black),
-        ),
-        trailing: IconButton(
-          icon: Icon(Icons.delete),
-          color: Colors.red,
-          onPressed: () {
-            print('Clicked on delete button');
-          },
         ),
       ),
     );

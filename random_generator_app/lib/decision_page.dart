@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:random_generator_app/add_option_button.dart';
+import 'package:random_generator_app/dialog_box.dart';
 import './decision_item.dart';
 
 class DecisionPage extends StatefulWidget {
@@ -33,9 +34,25 @@ class _DecisionPageState extends State<DecisionPage> {
     ["Chinese"],
   ];
 
+  //create new option
+  void createNewOption() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return DialogBox();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          createNewOption();
+        },
+        child: const Icon(Icons.add),
+      ),
       body: Column(
         children: [
           const SizedBox(
@@ -58,6 +75,7 @@ class _DecisionPageState extends State<DecisionPage> {
             color: Colors.black,
             height: 20,
           ),
+
           Expanded(
             child: ListView.builder(
               itemCount: optionsList.length,
