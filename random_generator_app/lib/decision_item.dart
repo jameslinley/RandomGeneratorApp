@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DecisionItem extends StatelessWidget {
-  const DecisionItem({super.key});
+  final String optionText;
+
+  const DecisionItem({super.key, required this.optionText});
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +15,16 @@ class DecisionItem extends StatelessWidget {
         ),
         tileColor: Color.fromARGB(255, 207, 239, 170),
         title: Text(
-          'Pizza',
+          optionText,
           textAlign: TextAlign.left,
           style: TextStyle(fontSize: 20, color: Colors.black),
         ),
-        trailing: Icon(
-          Icons.delete,
+        trailing: IconButton(
+          icon: Icon(Icons.delete),
           color: Colors.red,
+          onPressed: () {
+            print('Clicked on delete button');
+          },
         ),
       ),
     );
