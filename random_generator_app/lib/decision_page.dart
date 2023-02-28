@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:random_generator_app/add_option_button.dart';
@@ -14,10 +16,11 @@ class DecisionPage extends StatefulWidget {
 class _DecisionPageState extends State<DecisionPage> {
   String decisionTxt = 'Your decision is ...';
   final _controller = TextEditingController();
+  Random r = new Random();
 
   List optionsList = [
-    ["Pizza"],
-    ["Chinese"],
+    // ["Pizza"],
+    // ["Chinese"],
   ];
 
   void saveNewOption() {
@@ -44,6 +47,7 @@ class _DecisionPageState extends State<DecisionPage> {
 
   //pull to refresh screen method
 
+  //function to remove option at given index
   void deleteOption(int index) {
     setState(() {
       optionsList.removeAt(index);
@@ -52,7 +56,9 @@ class _DecisionPageState extends State<DecisionPage> {
 
   void randomDecision() {
     setState(() {
-      decisionTxt = "lazy";
+      var l = optionsList.length;
+      int randomNumber = r.nextInt(l);
+      decisionTxt = optionsList[randomNumber][0];
     });
   }
 
@@ -89,7 +95,6 @@ class _DecisionPageState extends State<DecisionPage> {
             color: Colors.black,
             height: 20,
           ),
-
           Expanded(
             child: ListView.builder(
               itemCount: optionsList.length,
@@ -101,11 +106,6 @@ class _DecisionPageState extends State<DecisionPage> {
               },
             ),
           )
-
-          // // List of inputted decisions
-          // DecisionItem(optionText: 'pizza'),
-          // DecisionItem(optionText: 'chinese'),
-          // DecisionItem(optionText: 'indian'),
         ],
       ),
     );
@@ -124,61 +124,3 @@ class _DecisionPageState extends State<DecisionPage> {
 //         repeatForever: true,
 //       ),
 
-
-//previous buttons
-//   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //   children: [
-          //     ElevatedButton(
-          //       onPressed: () {
-          //         setState(
-          //           () {
-          //             decisionTxt = _controller.text;
-          //             _controller.clear();
-          //           },
-          //         );
-          //       },
-          //       child: const Text('Make decision'),
-          //     ),
-          //     ElevatedButton(
-          //       onPressed: () {
-          //         setState(
-          //           () {},
-          //         );
-          //       },
-          //       child: const Text('Clear all'),
-          //     ),
-          //   ],
-
-// previous textfield to enter decision
-// Container(
-//   margin: const EdgeInsets.all(5),
-//   padding: const EdgeInsets.all(5),
-//   child: TextField(
-//     controller: _controller,
-//     decoration: InputDecoration(
-//       border: const OutlineInputBorder(),
-//       labelText: 'Enter a decision',
-//       suffixIcon: IconButton(
-//         onPressed: () {
-//           _controller.clear();
-//         },
-//         icon: const Icon(Icons.clear),
-//       ),
-//     ),
-//   ),
-// ),
-
-// previous row of buttons
-// Row(
-//   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//   children: [
-//     AddOptionButton(
-//       text: "Add",
-//       onPressed: saveNewOption,
-//     ),
-//     AddOptionButton(
-//       text: "Clear all",
-//       onPressed: clearAll,
-//     )
-//   ],
-// ),
