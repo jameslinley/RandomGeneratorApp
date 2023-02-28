@@ -42,6 +42,20 @@ class _DecisionPageState extends State<DecisionPage> {
     );
   }
 
+  //pull to refresh screen method
+
+  void deleteOption(int index) {
+    setState(() {
+      optionsList.removeAt(index);
+    });
+  }
+
+  void randomDecision() {
+    setState(() {
+      decisionTxt = "lazy";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +80,9 @@ class _DecisionPageState extends State<DecisionPage> {
           ),
           //button to generate decision/choose random option from inputted decisions
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              randomDecision();
+            },
             child: Text('generate'),
           ),
           const Divider(
@@ -80,6 +96,7 @@ class _DecisionPageState extends State<DecisionPage> {
               itemBuilder: (BuildContext context, int index) {
                 return DecisionItem(
                   optionText: optionsList[index][0],
+                  deleteFunction: (context) => deleteOption(index),
                 );
               },
             ),
