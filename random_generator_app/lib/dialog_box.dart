@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:random_generator_app/add_option_button.dart';
+import 'package:random_generator_app/my_button.dart';
 
 class DialogBox extends StatelessWidget {
   final controller;

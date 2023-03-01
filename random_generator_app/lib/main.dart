@@ -32,9 +32,9 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Random Generator'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Random Generator'),
+      // ),
       body: IndexedStack(index: currentPage, children: pages),
       bottomNavigationBar: NavigationBar(
         destinations: const [

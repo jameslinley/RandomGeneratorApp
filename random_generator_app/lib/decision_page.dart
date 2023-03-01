@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:random_generator_app/add_option_button.dart';
 import 'package:random_generator_app/dialog_box.dart';
 import './decision_item.dart';
 
@@ -62,9 +61,25 @@ class _DecisionPageState extends State<DecisionPage> {
     });
   }
 
+  void refreshPage() {
+    setState(() {
+      decisionTxt = 'Your decision is ...';
+      optionsList.clear();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Random Generator'),
+        actions: [
+          IconButton(
+            onPressed: refreshPage,
+            icon: const Icon(Icons.refresh),
+          )
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           createNewOption();

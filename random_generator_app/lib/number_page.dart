@@ -14,9 +14,27 @@ class _NumberPageState extends State<NumberPage> {
   TextEditingController maxValue = TextEditingController();
   String minValueInput = '', maxValueInput = '';
   int minValueInputInt = 0, maxValueInputInt = 0, randomInRange = 0;
+
+  void refreshPage() {
+    setState(() {
+      minValue.clear();
+      maxValue.clear();
+      randomNumber = 'X';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Random Generator'),
+        actions: [
+          IconButton(
+            onPressed: refreshPage,
+            icon: Icon(Icons.refresh),
+          )
+        ],
+      ),
       body: Column(
         children: [
           const SizedBox(height: 15),
@@ -88,24 +106,6 @@ class _NumberPageState extends State<NumberPage> {
                               (maxValueInputInt + 1) - minValueInputInt);
 
                       randomNumber = randomInRange.toString();
-                    });
-                  },
-                ),
-              ),
-              ConstrainedBox(
-                constraints:
-                    const BoxConstraints.tightFor(width: 100, height: 40),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    padding: const EdgeInsets.all(0.5),
-                  ),
-                  child: const Text('Refresh'),
-                  onPressed: () {
-                    setState(() {
-                      minValue.clear();
-                      maxValue.clear();
-                      randomNumber = 'X';
                     });
                   },
                 ),
