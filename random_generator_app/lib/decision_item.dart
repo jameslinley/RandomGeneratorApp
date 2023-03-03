@@ -27,11 +27,11 @@ class DecisionItem extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          tileColor: Color.fromARGB(98, 34, 100, 151),
+          tileColor: Color(0xFF4C636D),
           title: Text(
             optionText,
             textAlign: TextAlign.left,
-            style: TextStyle(fontSize: 20, color: Colors.black),
+            style: TextStyle(fontSize: 20, color: Colors.white),
           ),
         ),
       ),

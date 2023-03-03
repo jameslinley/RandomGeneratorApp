@@ -86,6 +86,7 @@ class _DecisionPageState extends State<DecisionPage> {
         },
         child: const Icon(Icons.add),
       ),
+      backgroundColor: Color(0xFFE2DAD7),
       body: Column(
         children: [
           const SizedBox(
@@ -96,7 +97,7 @@ class _DecisionPageState extends State<DecisionPage> {
             margin: const EdgeInsets.all(10),
             child: Text(
               decisionTxt,
-              style: const TextStyle(fontSize: 35, color: Colors.blueGrey),
+              style: const TextStyle(fontSize: 35, color: Colors.black),
             ),
           ),
           //button to generate decision/choose random option from inputted decisions
