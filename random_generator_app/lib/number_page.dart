@@ -31,7 +31,7 @@ class _NumberPageState extends State<NumberPage> {
         actions: [
           IconButton(
             onPressed: refreshPage,
-            icon: Icon(Icons.refresh),
+            icon: const Icon(Icons.refresh),
           )
         ],
       ),

@@ -15,6 +15,7 @@ class DecisionPage extends StatefulWidget {
 class _DecisionPageState extends State<DecisionPage> {
   String decisionTxt = 'Your decision is ...';
   final _controller = TextEditingController();
+  TextEditingController questionText = TextEditingController();
   Random r = new Random();
 
   List optionsList = [
@@ -64,6 +65,7 @@ class _DecisionPageState extends State<DecisionPage> {
   void refreshPage() {
     setState(() {
       decisionTxt = 'Your decision is ...';
+      questionText.clear();
       optionsList.clear();
     });
   }
@@ -86,11 +88,22 @@ class _DecisionPageState extends State<DecisionPage> {
         },
         child: const Icon(Icons.add),
       ),
-      backgroundColor: Color(0xFFE2DAD7),
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           const SizedBox(
             height: 10,
+          ),
+          Container(
+            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
+            child: TextField(
+              controller: questionText,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Enter your question',
+              ),
+            ),
           ),
           Container(
             alignment: Alignment.topCenter,
@@ -101,12 +114,32 @@ class _DecisionPageState extends State<DecisionPage> {
             ),
           ),
           //button to generate decision/choose random option from inputted decisions
-          ElevatedButton(
-            onPressed: () {
-              randomDecision();
-            },
-            child: Text('generate'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  createNewOption();
+                },
+                child: Text('Add options'),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  randomDecision();
+                },
+                child: Text('generate'),
+              ),
+            ],
           ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     randomDecision();
+          //   },
+          //   child: Text('generate'),
+          // ),
           const Divider(
             color: Colors.black,
             height: 20,
