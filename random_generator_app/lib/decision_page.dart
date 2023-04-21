@@ -13,7 +13,7 @@ class DecisionPage extends StatefulWidget {
 }
 
 class _DecisionPageState extends State<DecisionPage> {
-  String decisionTxt = 'Your decision is ...';
+  String decisionTxt = '...';
   final _controller = TextEditingController();
   TextEditingController questionText = TextEditingController();
   Random r = Random();
@@ -65,7 +65,7 @@ class _DecisionPageState extends State<DecisionPage> {
   void refreshPage() {
     setState(
       () {
-        decisionTxt = 'Your decision is ...';
+        decisionTxt = '...';
         questionText.clear();
         optionsList.clear();
         FocusScope.of(context).unfocus();
@@ -127,14 +127,17 @@ class _DecisionPageState extends State<DecisionPage> {
             height: 5,
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: optionsList.length,
-              itemBuilder: (BuildContext context, int index) {
-                return DecisionItem(
-                  optionText: optionsList[index][0],
-                  deleteFunction: (context) => deleteOption(index),
-                );
-              },
+            child: Container(
+              color: Colors.blueGrey[100],
+              child: ListView.builder(
+                itemCount: optionsList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return DecisionItem(
+                    optionText: optionsList[index][0],
+                    deleteFunction: (context) => deleteOption(index),
+                  );
+                },
+              ),
             ),
           ),
           const Divider(
@@ -179,3 +182,5 @@ class _DecisionPageState extends State<DecisionPage> {
     );
   }
 }
+
+//style: const TextStyle(fontSize: 30, color: Colors.black)

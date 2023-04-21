@@ -23,16 +23,19 @@ class DecisionItem extends StatelessWidget {
         ],
       ),
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+        height: 40,
+        margin: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 1), //EdgeInsets.symmetric(horizontal: 20, vertical: 1),
         child: ListTile(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(5),
           ),
-          tileColor: Colors.white,
+          tileColor: Colors.transparent,
           title: Text(
             optionText,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 20, color: Colors.black),
+            style: const TextStyle(fontSize: 25, color: Colors.black),
           ),
         ),
       ),
