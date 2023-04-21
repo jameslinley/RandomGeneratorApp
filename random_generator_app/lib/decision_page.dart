@@ -128,7 +128,7 @@ class _DecisionPageState extends State<DecisionPage> {
           ),
           Expanded(
             child: Container(
-              color: Colors.blueGrey[100],
+              color: const Color.fromARGB(100, 199, 218, 201),
               child: ListView.builder(
                 itemCount: optionsList.length,
                 itemBuilder: (BuildContext context, int index) {
