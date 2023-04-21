@@ -17,7 +17,8 @@ class _DecisionPageState extends State<DecisionPage> {
   final _controller = TextEditingController();
   TextEditingController questionText = TextEditingController();
   Random r = Random();
-  Color midnightColour = const Color.fromARGB(255, 76, 99, 109);
+  Color midnightColour = const Color.fromRGBO(
+      76, 99, 109, 1.0); //Color.fromARGB(255, 76, 99, 109);
   Color mintGreenColour = const Color.fromARGB(255, 199, 218, 201);
   Color oceanBlueColour = const Color.fromARGB(255, 146, 187, 203);
   Color burntOrangeColour = const Color.fromARGB(255, 234, 129, 49);
@@ -84,12 +85,24 @@ class _DecisionPageState extends State<DecisionPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Random Generator'),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: refreshPage,
             icon: const Icon(Icons.refresh),
           )
         ],
+        backgroundColor: oceanBlueColour,
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.menu),
+        ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(10),
+            bottomRight: Radius.circular(10),
+          ),
+        ),
       ),
       backgroundColor: Colors.white,
       body: Column(
@@ -134,7 +147,7 @@ class _DecisionPageState extends State<DecisionPage> {
           ),
           Expanded(
             child: Container(
-              color: midnightColour,
+              color: mintGreenColour,
               child: ListView.builder(
                 itemCount: optionsList.length,
                 itemBuilder: (BuildContext context, int index) {

@@ -15,6 +15,14 @@ class _NumberPageState extends State<NumberPage> {
   String minValueInput = '', maxValueInput = '';
   int minValueInputInt = 0, maxValueInputInt = 0, randomInRange = 0;
 
+  //Colours
+  Color midnightColour = const Color.fromARGB(100, 76, 99, 109);
+  Color mintGreenColour = const Color.fromARGB(255, 199, 218, 201);
+  Color oceanBlueColour = const Color.fromARGB(255, 146, 187, 203);
+  Color burntOrangeColour = const Color.fromARGB(255, 234, 129, 49);
+  Color blushColour = const Color.fromARGB(255, 226, 218, 215);
+  Color lilacColour = const Color.fromARGB(255, 214, 184, 218);
+
   void refreshPage() {
     setState(() {
       minValue.clear();
@@ -28,12 +36,24 @@ class _NumberPageState extends State<NumberPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Random Generator'),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: refreshPage,
             icon: const Icon(Icons.refresh),
           )
         ],
+        backgroundColor: oceanBlueColour,
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.menu),
+        ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(10),
+            bottomRight: Radius.circular(10),
+          ),
+        ),
       ),
       body: Column(
         children: [
