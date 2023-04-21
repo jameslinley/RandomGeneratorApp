@@ -121,25 +121,41 @@ class _DecisionPageState extends State<DecisionPage> {
             child: TextField(
               style: const TextStyle(fontSize: 20),
               controller: questionText,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
                 labelText: 'Enter your question',
+                labelStyle: TextStyle(
+                    color: midnightColour,
+                    fontStyle: FontStyle.italic,
+                    fontSize: 16),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    questionText.clear();
+                  },
+                  icon: const Icon(Icons.clear),
+                ),
               ),
             ),
           ),
           ConstrainedBox(
             constraints: const BoxConstraints(minWidth: 100, minHeight: 40),
-            child: ElevatedButton(
+            child: ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.all(10),
                 backgroundColor: oceanBlueColour,
+                shadowColor: midnightColour,
+                elevation: 5,
               ),
-              child: const Text(
-                'Add',
+              label: const Text(
+                'Enter option',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.black,
                 ),
+              ),
+              icon: const Icon(
+                Icons.add,
+                color: Colors.black,
               ),
               onPressed: () {
                 createNewOption();
@@ -183,6 +199,8 @@ class _DecisionPageState extends State<DecisionPage> {
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.all(10),
                 backgroundColor: oceanBlueColour,
+                shadowColor: midnightColour,
+                elevation: 5,
               ),
               child: const Text(
                 'Generate',
@@ -200,13 +218,19 @@ class _DecisionPageState extends State<DecisionPage> {
             height: 5,
           ),
           Container(
-            color: burntOrangeColour,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(15),
+              ),
+              color: burntOrangeColour,
+            ),
+
             height: 75,
             alignment: Alignment.center,
             margin: const EdgeInsets.all(5), //const EdgeInsets.all(5)
             child: Text(
               decisionTxt,
-              style: const TextStyle(fontSize: 30, color: Colors.black),
+              style: const TextStyle(fontSize: 35, color: Colors.black),
             ),
           ),
         ],
@@ -214,5 +238,3 @@ class _DecisionPageState extends State<DecisionPage> {
     );
   }
 }
-
-//style: const TextStyle(fontSize: 30, color: Colors.black)

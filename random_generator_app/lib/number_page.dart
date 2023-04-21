@@ -35,7 +35,7 @@ class _NumberPageState extends State<NumberPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Random Generator',
           style: TextStyle(
             color: Colors.black,
