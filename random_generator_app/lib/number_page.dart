@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import './menu_bar.dart';
 
 class NumberPage extends StatefulWidget {
   const NumberPage({super.key});
@@ -34,6 +35,7 @@ class _NumberPageState extends State<NumberPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MenuBar(),
       appBar: AppBar(
         title: const Text('Random Generator'),
         centerTitle: true,
@@ -44,10 +46,6 @@ class _NumberPageState extends State<NumberPage> {
           )
         ],
         backgroundColor: oceanBlueColour,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.menu),
-        ),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(10),
