@@ -44,9 +44,11 @@ class _DecisionPageState extends State<DecisionPage> {
 
   //function to remove option at given index
   void deleteOption(int index) {
-    setState(() {
-      optionsList.removeAt(index);
-    });
+    setState(
+      () {
+        optionsList.removeAt(index);
+      },
+    );
   }
 
   void randomDecision() {
@@ -175,42 +177,3 @@ class _DecisionPageState extends State<DecisionPage> {
     );
   }
 }
-
-// //animated text code
-// child: AnimatedTextKit(
-//         animatedTexts: [
-//           WavyAnimatedText('COMING SOON',
-//               textStyle: const TextStyle(
-//                 color: Colors.blueGrey,
-//                 fontSize: 30,
-//               )),
-//         ],
-//         repeatForever: true,
-//       ),
-
-// child: AnimatedTextKit(
-//                     animatedTexts: [
-//                       WavyAnimatedText(
-//                         'Generate',
-//                         textStyle: const TextStyle(
-//                           color: Colors.blueGrey,
-//                           fontSize: 24,
-//                         ),
-//                       ),
-//                     ],
-//                     repeatForever: true,
-//                   ),
-
- // ConstrainedBox(
-              //   constraints:
-              //       const BoxConstraints.tightFor(width: 100, height: 40),
-              //   child: ElevatedButton(
-              //     style: ElevatedButton.styleFrom(
-              //       padding: const EdgeInsets.all(0.5),
-              //     ),
-              //     child: const Text('Add option'),
-              //     onPressed: () {
-              //       createNewOption();
-              //     },
-              //   ),
-              // )
