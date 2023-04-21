@@ -17,6 +17,12 @@ class _DecisionPageState extends State<DecisionPage> {
   final _controller = TextEditingController();
   TextEditingController questionText = TextEditingController();
   Random r = Random();
+  Color midnightColour = const Color.fromARGB(255, 76, 99, 109);
+  Color mintGreenColour = const Color.fromARGB(255, 199, 218, 201);
+  Color oceanBlueColour = const Color.fromARGB(255, 146, 187, 203);
+  Color burntOrangeColour = const Color.fromARGB(255, 234, 129, 49);
+  Color blushColour = const Color.fromARGB(255, 226, 218, 215);
+  Color lilacColour = const Color.fromARGB(255, 214, 184, 218);
 
   List optionsList = [];
 
@@ -128,7 +134,7 @@ class _DecisionPageState extends State<DecisionPage> {
           ),
           Expanded(
             child: Container(
-              color: const Color.fromARGB(100, 199, 218, 201),
+              color: midnightColour,
               child: ListView.builder(
                 itemCount: optionsList.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -168,7 +174,7 @@ class _DecisionPageState extends State<DecisionPage> {
             height: 5,
           ),
           Container(
-            color: Colors.lightGreen[200],
+            color: burntOrangeColour,
             height: 75,
             alignment: Alignment.center,
             margin: const EdgeInsets.all(5), //const EdgeInsets.all(5)
