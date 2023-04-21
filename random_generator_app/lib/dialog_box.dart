@@ -26,6 +26,7 @@ class DialogBox extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             TextField(
+              autofocus: true,
               controller: controller,
               decoration: const InputDecoration(
                 hintText: "Add option",
