@@ -1,6 +1,5 @@
 import 'dart:math';
 
-//import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:random_generator_app/dialog_box.dart';
 import './decision_item.dart';
@@ -17,8 +16,7 @@ class _DecisionPageState extends State<DecisionPage> {
   final _controller = TextEditingController();
   TextEditingController questionText = TextEditingController();
   Random r = Random();
-  Color midnightColour = const Color.fromRGBO(
-      76, 99, 109, 1.0); //Color.fromARGB(255, 76, 99, 109);
+  Color midnightColour = const Color.fromARGB(255, 76, 99, 109);
   Color mintGreenColour = const Color.fromARGB(255, 199, 218, 201);
   Color oceanBlueColour = const Color.fromARGB(255, 146, 187, 203);
   Color burntOrangeColour = const Color.fromARGB(255, 234, 129, 49);
@@ -84,18 +82,25 @@ class _DecisionPageState extends State<DecisionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Random Generator'),
+        title: const Text(
+          'Random Generator',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
         centerTitle: true,
         actions: [
           IconButton(
             onPressed: refreshPage,
             icon: const Icon(Icons.refresh),
+            color: Colors.black,
           )
         ],
         backgroundColor: oceanBlueColour,
         leading: IconButton(
           onPressed: () {},
-          icon: const Icon(Icons.menu),
+          icon: const Icon(Icons.dark_mode),
+          color: Colors.black,
         ),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -127,10 +132,14 @@ class _DecisionPageState extends State<DecisionPage> {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.all(10),
+                backgroundColor: oceanBlueColour,
               ),
               child: const Text(
                 'Add',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                ),
               ),
               onPressed: () {
                 createNewOption();
@@ -147,7 +156,7 @@ class _DecisionPageState extends State<DecisionPage> {
           ),
           Expanded(
             child: Container(
-              color: mintGreenColour,
+              color: const Color.fromARGB(125, 199, 218, 201),
               child: ListView.builder(
                 itemCount: optionsList.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -173,10 +182,14 @@ class _DecisionPageState extends State<DecisionPage> {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.all(10),
+                backgroundColor: oceanBlueColour,
               ),
               child: const Text(
                 'Generate',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                ),
               ),
               onPressed: () {
                 randomDecision();

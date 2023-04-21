@@ -16,7 +16,7 @@ class _NumberPageState extends State<NumberPage> {
   int minValueInputInt = 0, maxValueInputInt = 0, randomInRange = 0;
 
   //Colours
-  Color midnightColour = const Color.fromARGB(100, 76, 99, 109);
+  Color midnightColour = const Color.fromARGB(255, 76, 99, 109);
   Color mintGreenColour = const Color.fromARGB(255, 199, 218, 201);
   Color oceanBlueColour = const Color.fromARGB(255, 146, 187, 203);
   Color burntOrangeColour = const Color.fromARGB(255, 234, 129, 49);
@@ -35,18 +35,25 @@ class _NumberPageState extends State<NumberPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Random Generator'),
+        title: Text(
+          'Random Generator',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
         centerTitle: true,
         actions: [
           IconButton(
             onPressed: refreshPage,
             icon: const Icon(Icons.refresh),
+            color: Colors.black,
           )
         ],
         backgroundColor: oceanBlueColour,
         leading: IconButton(
           onPressed: () {},
-          icon: const Icon(Icons.menu),
+          icon: const Icon(Icons.dark_mode),
+          color: Colors.black,
         ),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
