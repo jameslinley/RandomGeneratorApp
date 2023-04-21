@@ -28,7 +28,7 @@ class _DecisionPageState extends State<DecisionPage> {
     Navigator.of(context).pop();
   }
 
-  //create new option
+  //method to create a new option
   void createNewOption() {
     showDialog(
       context: context,
@@ -51,6 +51,7 @@ class _DecisionPageState extends State<DecisionPage> {
     );
   }
 
+  //method to generate an option at random from list of options
   void randomDecision() {
     setState(() {
       var l = optionsList.length;
@@ -60,6 +61,7 @@ class _DecisionPageState extends State<DecisionPage> {
     });
   }
 
+  //method to refresh the page with default/original values
   void refreshPage() {
     setState(
       () {
