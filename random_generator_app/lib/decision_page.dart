@@ -1,9 +1,9 @@
 import 'dart:math';
 
+//import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:random_generator_app/dialog_box.dart';
 import './decision_item.dart';
-import './menu_bar.dart';
 
 class DecisionPage extends StatefulWidget {
   const DecisionPage({super.key});
@@ -83,7 +83,6 @@ class _DecisionPageState extends State<DecisionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MenuBar(),
       appBar: AppBar(
         title: const Text('Random Generator'),
         centerTitle: true,
@@ -94,6 +93,10 @@ class _DecisionPageState extends State<DecisionPage> {
           )
         ],
         backgroundColor: oceanBlueColour,
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.menu),
+        ),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(10),
