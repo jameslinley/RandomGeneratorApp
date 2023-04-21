@@ -5,6 +5,23 @@ class MenuBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer();
+    bool isDarkMode = false;
+    return Drawer(
+      child: ListView(
+        children: [
+          ListTile(
+            leading: Icon(Icons.sunny),
+            title: Text('Dark mode'),
+            onTap: () => null,
+          ),
+          Switch(
+            value: isDarkMode,
+            onChanged: (bool newBool) {
+              isDarkMode = newBool;
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
