@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:animated_text_kit/animated_text_kit.dart';
+//import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:random_generator_app/dialog_box.dart';
 import './decision_item.dart';
@@ -16,12 +16,9 @@ class _DecisionPageState extends State<DecisionPage> {
   String decisionTxt = 'Your decision is ...';
   final _controller = TextEditingController();
   TextEditingController questionText = TextEditingController();
-  Random r = new Random();
+  Random r = Random();
 
-  List optionsList = [
-    // ["Pizza"],
-    // ["Chinese"],
-  ];
+  List optionsList = [];
 
   void saveNewOption() {
     setState(() {
@@ -45,8 +42,6 @@ class _DecisionPageState extends State<DecisionPage> {
     );
   }
 
-  //pull to refresh screen method
-
   //function to remove option at given index
   void deleteOption(int index) {
     setState(() {
@@ -59,15 +54,19 @@ class _DecisionPageState extends State<DecisionPage> {
       var l = optionsList.length;
       int randomNumber = r.nextInt(l);
       decisionTxt = optionsList[randomNumber][0];
+      FocusScope.of(context).unfocus();
     });
   }
 
   void refreshPage() {
-    setState(() {
-      decisionTxt = 'Your decision is ...';
-      questionText.clear();
-      optionsList.clear();
-    });
+    setState(
+      () {
+        decisionTxt = 'Your decision is ...';
+        questionText.clear();
+        optionsList.clear();
+        FocusScope.of(context).unfocus();
+      },
+    );
   }
 
   @override
@@ -82,12 +81,6 @@ class _DecisionPageState extends State<DecisionPage> {
           )
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          createNewOption();
-        },
-        child: const Icon(Icons.add),
-      ),
       backgroundColor: Colors.white,
       body: Column(
         children: [
@@ -98,6 +91,7 @@ class _DecisionPageState extends State<DecisionPage> {
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(5),
             child: TextField(
+              style: const TextStyle(fontSize: 20),
               controller: questionText,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -105,44 +99,28 @@ class _DecisionPageState extends State<DecisionPage> {
               ),
             ),
           ),
-          Container(
-            alignment: Alignment.topCenter,
-            margin: const EdgeInsets.all(10),
-            child: Text(
-              decisionTxt,
-              style: const TextStyle(fontSize: 35, color: Colors.black),
+          ConstrainedBox(
+            constraints: const BoxConstraints(minWidth: 100, minHeight: 40),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.all(10),
+              ),
+              child: const Text(
+                'Add',
+                style: TextStyle(fontSize: 20),
+              ),
+              onPressed: () {
+                createNewOption();
+              },
             ),
           ),
-          //button to generate decision/choose random option from inputted decisions
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  createNewOption();
-                },
-                child: Text('Add options'),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  randomDecision();
-                },
-                child: Text('generate'),
-              ),
-            ],
+          const SizedBox(
+            height: 10,
           ),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     randomDecision();
-          //   },
-          //   child: Text('generate'),
-          // ),
           const Divider(
-            color: Colors.black,
-            height: 20,
+            thickness: 1,
+            color: Colors.blueGrey,
+            height: 5,
           ),
           Expanded(
             child: ListView.builder(
@@ -154,14 +132,51 @@ class _DecisionPageState extends State<DecisionPage> {
                 );
               },
             ),
-          )
+          ),
+          const Divider(
+            thickness: 1,
+            color: Colors.blueGrey,
+            height: 5,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          ConstrainedBox(
+            constraints: const BoxConstraints(
+                minWidth: 200, minHeight: 40), //width: 200, height: 40
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.all(10),
+              ),
+              child: const Text(
+                'Generate',
+                style: TextStyle(fontSize: 20),
+              ),
+              onPressed: () {
+                randomDecision();
+              },
+            ),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          Container(
+            color: Colors.lightGreen[200],
+            height: 75,
+            alignment: Alignment.center,
+            margin: const EdgeInsets.all(5), //const EdgeInsets.all(5)
+            child: Text(
+              decisionTxt,
+              style: const TextStyle(fontSize: 30, color: Colors.black),
+            ),
+          ),
         ],
       ),
     );
   }
 }
 
-// animated text code
+// //animated text code
 // child: AnimatedTextKit(
 //         animatedTexts: [
 //           WavyAnimatedText('COMING SOON',
@@ -173,3 +188,29 @@ class _DecisionPageState extends State<DecisionPage> {
 //         repeatForever: true,
 //       ),
 
+// child: AnimatedTextKit(
+//                     animatedTexts: [
+//                       WavyAnimatedText(
+//                         'Generate',
+//                         textStyle: const TextStyle(
+//                           color: Colors.blueGrey,
+//                           fontSize: 24,
+//                         ),
+//                       ),
+//                     ],
+//                     repeatForever: true,
+//                   ),
+
+ // ConstrainedBox(
+              //   constraints:
+              //       const BoxConstraints.tightFor(width: 100, height: 40),
+              //   child: ElevatedButton(
+              //     style: ElevatedButton.styleFrom(
+              //       padding: const EdgeInsets.all(0.5),
+              //     ),
+              //     child: const Text('Add option'),
+              //     onPressed: () {
+              //       createNewOption();
+              //     },
+              //   ),
+              // )

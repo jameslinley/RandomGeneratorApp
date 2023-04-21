@@ -106,6 +106,7 @@ class _NumberPageState extends State<NumberPage> {
                               (maxValueInputInt + 1) - minValueInputInt);
 
                       randomNumber = randomInRange.toString();
+                      FocusScope.of(context).unfocus();
                     });
                   },
                 ),

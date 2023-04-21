@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+// ignore: must_be_immutable
 class DecisionItem extends StatelessWidget {
   final String optionText;
   Function(BuildContext)? deleteFunction;
@@ -22,16 +23,16 @@ class DecisionItem extends StatelessWidget {
         ],
       ),
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+        margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
         child: ListTile(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          tileColor: Color(0xFF4C636D),
+          tileColor: Colors.white,
           title: Text(
             optionText,
-            textAlign: TextAlign.left,
-            style: TextStyle(fontSize: 20, color: Colors.white),
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 20, color: Colors.black),
           ),
         ),
       ),
