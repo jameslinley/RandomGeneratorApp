@@ -9,6 +9,14 @@ class DialogBox extends StatelessWidget {
   VoidCallback onSave;
   VoidCallback onCancel;
 
+  //colours
+  Color midnightColour = const Color.fromARGB(255, 76, 99, 109);
+  Color mintGreenColour = const Color.fromARGB(255, 199, 218, 201);
+  Color oceanBlueColour = const Color.fromARGB(255, 146, 187, 203);
+  Color burntOrangeColour = const Color.fromARGB(255, 234, 129, 49);
+  Color blushColour = const Color.fromARGB(255, 226, 218, 215);
+  Color lilacColour = const Color.fromARGB(255, 214, 184, 218);
+
   DialogBox({
     super.key,
     required this.controller,
@@ -19,7 +27,7 @@ class DialogBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: const Color(0xFF92BBCB),
+      backgroundColor: blushColour,
       content: SizedBox(
         height: 120,
         child: Column(
@@ -28,8 +36,18 @@ class DialogBox extends StatelessWidget {
             TextField(
               autofocus: true,
               controller: controller,
-              decoration: const InputDecoration(
-                hintText: "Add option",
+              style: const TextStyle(fontSize: 20),
+              decoration: InputDecoration(
+                hintText: 'Add option',
+                hintStyle: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
+                // labelText: "Add option",
+
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    controller.clear();
+                  },
+                  icon: Icon(Icons.clear, color: midnightColour),
+                ),
               ),
             ),
             Row(
