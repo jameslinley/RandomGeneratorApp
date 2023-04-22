@@ -39,7 +39,8 @@ class _RootPageState extends State<RootPage> {
       body: IndexedStack(index: currentPage, children: pages),
       bottomNavigationBar: NavigationBar(
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.scale), label: 'Decisions'),
+          NavigationDestination(
+              icon: Icon(Icons.psychology), label: 'Decisions'),
           NavigationDestination(icon: Icon(Icons.numbers), label: 'Number'),
         ],
         onDestinationSelected: (int index) {
