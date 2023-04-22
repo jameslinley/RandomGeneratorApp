@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:random_generator_app/number_page.dart';
 import 'package:random_generator_app/decision_page.dart';
+import 'package:random_generator_app/themes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(), //primarySwatch: Colors.
+      themeMode: ThemeMode.system,
+      // darkTheme: MyThemes.darkTheme,
+      theme: ThemeData(),
       home: const RootPage(),
     );
   }

@@ -110,7 +110,7 @@ class _DecisionPageState extends State<DecisionPage> {
           ),
         ),
       ),
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       body: Column(
         children: [
           const SizedBox(
