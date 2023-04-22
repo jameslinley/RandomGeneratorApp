@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:random_generator_app/number_page.dart';
 import 'package:random_generator_app/decision_page.dart';
-import 'package:random_generator_app/themes.dart';
+// import 'package:random_generator_app/themes.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +13,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
