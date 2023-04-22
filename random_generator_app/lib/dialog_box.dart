@@ -39,7 +39,8 @@ class DialogBox extends StatelessWidget {
               style: const TextStyle(fontSize: 20),
               decoration: InputDecoration(
                 hintText: 'Add option',
-                hintStyle: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
+                hintStyle:
+                    const TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
                 // labelText: "Add option",
 
                 suffixIcon: IconButton(
