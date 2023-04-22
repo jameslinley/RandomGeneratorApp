@@ -10,9 +10,9 @@ class MenuBar extends StatelessWidget {
       child: ListView(
         children: [
           ListTile(
-            leading: Icon(Icons.sunny),
-            title: Text('Dark mode'),
-            onTap: () => null,
+            leading: const Icon(Icons.sunny),
+            title: const Text('Dark mode'),
+            onTap: () {},
           ),
           Switch(
             value: isDarkMode,

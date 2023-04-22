@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:random_generator_app/dialog_box.dart';
 import './decision_item.dart';
 
@@ -222,19 +223,33 @@ class _DecisionPageState extends State<DecisionPage> {
               borderRadius: const BorderRadius.all(
                 Radius.circular(15),
               ),
-              color: burntOrangeColour,
+              border: Border.all(color: burntOrangeColour, width: 2),
+              color: Colors.transparent,
             ),
-
             height: 75,
             alignment: Alignment.center,
-            margin: const EdgeInsets.all(5), //const EdgeInsets.all(5)
+            margin: const EdgeInsets.all(5),
             child: Text(
               decisionTxt,
               style: const TextStyle(fontSize: 35, color: Colors.black),
-            ),
+            )
+                .animate(
+                  onPlay: (controller) => controller.repeat(),
+                )
+                .fadeIn(duration: 1000.ms)
+                .tint(color: midnightColour)
+                .then(delay: 800.ms)
+                .fadeOut(duration: 1000.ms),
           ),
         ],
       ),
     );
   }
 }
+
+
+
+// child: Text(
+//               decisionTxt,
+//               style: const TextStyle(fontSize: 35, color: Colors.black),
+//             ),

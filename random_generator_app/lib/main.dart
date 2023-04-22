@@ -29,7 +29,7 @@ class RootPage extends StatefulWidget {
 class _RootPageState extends State<RootPage> {
   int currentPage = 0;
 
-  List<Widget> pages = const [NumberPage(), DecisionPage()];
+  List<Widget> pages = const [DecisionPage(), NumberPage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +39,8 @@ class _RootPageState extends State<RootPage> {
       body: IndexedStack(index: currentPage, children: pages),
       bottomNavigationBar: NavigationBar(
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.numbers), label: 'Number'),
           NavigationDestination(icon: Icon(Icons.scale), label: 'Decisions'),
+          NavigationDestination(icon: Icon(Icons.numbers), label: 'Number'),
         ],
         onDestinationSelected: (int index) {
           setState(() {
