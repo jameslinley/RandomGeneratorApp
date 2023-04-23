@@ -227,14 +227,20 @@ class _DecisionPageState extends State<DecisionPage> {
             const SizedBox(
               height: 10,
             ),
-            const Divider(
-              thickness: 1,
-              color: Colors.blueGrey,
-              height: 5,
-            ),
+            // const Divider(
+            //   thickness: 1,
+            //   color: Colors.blueGrey,
+            //   height: 5,
+            // ),
             Expanded(
               child: Container(
-                color: const Color.fromARGB(125, 199, 218, 201),
+                decoration: BoxDecoration(boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    color: midnightColour,
+                    blurRadius: 5,
+                    offset: const Offset(1, 2),
+                  )
+                ], color: mintGreenColour),
                 child: ListView.builder(
                   itemCount: optionsList.length,
                   itemBuilder: (BuildContext context, int index) {
@@ -246,11 +252,11 @@ class _DecisionPageState extends State<DecisionPage> {
                 ),
               ),
             ),
-            const Divider(
-              thickness: 1,
-              color: Colors.blueGrey,
-              height: 5,
-            ),
+            // const Divider(
+            //   thickness: 1,
+            //   color: Colors.blueGrey,
+            //   height: 5,
+            // ),
             const SizedBox(
               height: 10,
             ),
