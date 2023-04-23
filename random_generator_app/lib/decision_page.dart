@@ -29,6 +29,7 @@ class _DecisionPageState extends State<DecisionPage> {
 
   final _controller = TextEditingController();
   TextEditingController questionText = TextEditingController();
+  var titleText = TextEditingController(text: 'Random Generator');
   Random r = Random();
   Color midnightColour = const Color.fromARGB(255, 76, 99, 109);
   Color mintGreenColour = const Color.fromARGB(255, 199, 218, 201);
@@ -93,6 +94,7 @@ class _DecisionPageState extends State<DecisionPage> {
         questionText.clear();
         optionsList.clear();
         FocusScope.of(context).unfocus();
+        titleText.text = 'Random Generator';
       },
     );
   }
@@ -120,15 +122,22 @@ class _DecisionPageState extends State<DecisionPage> {
     return value;
   }
 
+  void moveToTitle(String s) {
+    setState(() {
+      titleText.text = s;
+      FocusScope.of(context).unfocus();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'Random Generator',
-            style: TextStyle(
+          title: Text(
+            titleText.text,
+            style: const TextStyle(
               color: Colors.black,
             ),
           ),
@@ -173,9 +182,10 @@ class _DecisionPageState extends State<DecisionPage> {
                       fontSize: 16),
                   suffixIcon: IconButton(
                     onPressed: () {
+                      moveToTitle(questionText.text);
                       questionText.clear();
                     },
-                    icon: const Icon(Icons.clear),
+                    icon: const Icon(Icons.send),
                   ),
                 ),
               ),
