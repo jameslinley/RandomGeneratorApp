@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:math';
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:random_generator_app/dialog_box.dart';
@@ -13,7 +15,18 @@ class DecisionPage extends StatefulWidget {
 }
 
 class _DecisionPageState extends State<DecisionPage> {
-  Widget dText = const Text('...');
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Widget dText = const Text(
+    '...',
+    style: TextStyle(
+      fontSize: 35,
+      color: Color.fromARGB(255, 76, 99, 109),
+    ),
+  );
   String decisionTxt = "...";
 
   final _controller = TextEditingController();
@@ -70,7 +83,7 @@ class _DecisionPageState extends State<DecisionPage> {
         s = optionsList[randomNumber][0];
         FocusScope.of(context).unfocus();
         dText = formatText(s);
-        animateText();
+        // animateText();
       },
     );
   }
@@ -80,8 +93,7 @@ class _DecisionPageState extends State<DecisionPage> {
     setState(
       () {
         dText = formatText('...');
-        animateText();
-        // decisionTxt = '...';
+        // animateText();
         questionText.clear();
         optionsList.clear();
         FocusScope.of(context).unfocus();
@@ -99,12 +111,12 @@ class _DecisionPageState extends State<DecisionPage> {
   Widget animateText() {
     return dText = dText
         .animate(
-          onPlay: (controller) => controller.loop(count: 3),
+          onPlay: (animationController) => animationController.loop(count: 3),
+          // onComplete: (animationController) => animationController.reset(),
         )
-        .fadeIn(duration: 1000.ms)
+        .fade(duration: 1000.ms)
         .tint(color: midnightColour)
-        .then(delay: 800.ms)
-        .fadeOut(duration: 1000.ms);
+        .fadeIn(duration: 1000.ms);
   }
 
   textToString(Text t) {
@@ -268,3 +280,16 @@ class _DecisionPageState extends State<DecisionPage> {
     );
   }
 }
+
+
+
+
+// onComplete: (animationController) =>
+//               _animationController.addStatusListener(
+//             (status) async {
+//               if (status == AnimationStatus.completed) {
+//                 Navigator.pop(context);
+//                 _animationController.reset();
+//               }
+//             },
+//           ),
