@@ -10,11 +10,11 @@ class MyThemes {
 
   static final darkTheme = ThemeData(
     scaffoldBackgroundColor: const Color.fromARGB(255, 76, 99, 109),
-    colorScheme: ColorScheme.dark(),
+    colorScheme: const ColorScheme.dark(),
   );
 
   static final lightTheme = ThemeData(
     scaffoldBackgroundColor: Colors.white,
-    colorScheme: ColorScheme.light(),
+    colorScheme: const ColorScheme.light(),
   );
 }

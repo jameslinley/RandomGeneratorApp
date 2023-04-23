@@ -13,7 +13,7 @@ class DecisionPage extends StatefulWidget {
 }
 
 class _DecisionPageState extends State<DecisionPage> {
-  // Text decisionText = Text('...');
+  Widget dText = const Text('...');
   String decisionTxt = "...";
 
   final _controller = TextEditingController();
@@ -63,11 +63,14 @@ class _DecisionPageState extends State<DecisionPage> {
   void randomDecision() {
     setState(
       () {
+        String s = dText.toString();
+        // String s = textToString(dText);
         var l = optionsList.length;
         int randomNumber = r.nextInt(l);
-        decisionTxt = optionsList[randomNumber][0];
+        s = optionsList[randomNumber][0];
         FocusScope.of(context).unfocus();
-        // animateText(decisionTxt);
+        dText = formatText(s);
+        animateText();
       },
     );
   }
@@ -76,7 +79,9 @@ class _DecisionPageState extends State<DecisionPage> {
   void refreshPage() {
     setState(
       () {
-        decisionTxt = '...';
+        dText = formatText('...');
+        animateText();
+        // decisionTxt = '...';
         questionText.clear();
         optionsList.clear();
         FocusScope.of(context).unfocus();
@@ -84,37 +89,27 @@ class _DecisionPageState extends State<DecisionPage> {
     );
   }
 
-  void animateText(String txt) {
-    setState(
-      () {
-        Text(
-          txt,
-          style: const TextStyle(fontSize: 35, color: Colors.black),
-        )
-            .animate(
-              onPlay: (controller) => controller.loop(count: 3),
-            )
-            .fadeIn(duration: 1000.ms)
-            .tint(color: midnightColour)
-            .then(delay: 800.ms)
-            .fadeOut(duration: 1000.ms);
-      },
+  Widget formatText(String s) {
+    return dText = Text(
+      s,
+      style: TextStyle(fontSize: 35, color: midnightColour),
     );
   }
 
-  void changeText() {
-    setState(
-      () {
-        Text(decisionTxt)
-            .animate(
-              onPlay: (controller) => controller.loop(count: 3),
-            )
-            .fadeIn(duration: 1000.ms)
-            .tint(color: midnightColour)
-            .then(delay: 800.ms)
-            .fadeOut(duration: 1000.ms);
-      },
-    );
+  Widget animateText() {
+    return dText = dText
+        .animate(
+          onPlay: (controller) => controller.loop(count: 3),
+        )
+        .fadeIn(duration: 1000.ms)
+        .tint(color: midnightColour)
+        .then(delay: 800.ms)
+        .fadeOut(duration: 1000.ms);
+  }
+
+  textToString(Text t) {
+    var value = t.data;
+    return value;
   }
 
   @override
@@ -249,7 +244,6 @@ class _DecisionPageState extends State<DecisionPage> {
               ),
               onPressed: () {
                 randomDecision();
-                // changeText();
               },
             ),
           ),
@@ -267,20 +261,10 @@ class _DecisionPageState extends State<DecisionPage> {
             height: 75,
             alignment: Alignment.center,
             margin: const EdgeInsets.all(5),
-            child: Text(
-              decisionTxt,
-              style: TextStyle(fontSize: 35, color: midnightColour),
-            ),
+            child: dText,
           ),
         ],
       ),
     );
   }
 }
-
-
-
-// child: Text(
-//               decisionTxt,
-//               style: const TextStyle(fontSize: 35, color: Colors.black),
-//             ),
