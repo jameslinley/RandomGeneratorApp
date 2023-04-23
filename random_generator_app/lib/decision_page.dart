@@ -44,7 +44,7 @@ class _DecisionPageState extends State<DecisionPage> {
       optionsList.add([_controller.text]);
       _controller.clear();
     });
-    // Navigator.of(context).pop();
+    Navigator.of(context).pop();
   }
 
   //method to create a new option
@@ -75,7 +75,6 @@ class _DecisionPageState extends State<DecisionPage> {
     setState(
       () {
         String s = dText.toString();
-        // String s = textToString(dText);
         var l = optionsList.length;
         int randomNumber = r.nextInt(l);
         s = optionsList[randomNumber][0];
