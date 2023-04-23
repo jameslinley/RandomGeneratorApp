@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:random_generator_app/dialog_box.dart';
@@ -82,7 +81,7 @@ class _DecisionPageState extends State<DecisionPage> {
         s = optionsList[randomNumber][0];
         FocusScope.of(context).unfocus();
         dText = formatText(s);
-        // animateText();
+        animateText();
       },
     );
   }
@@ -92,7 +91,6 @@ class _DecisionPageState extends State<DecisionPage> {
     setState(
       () {
         dText = formatText('...');
-        // animateText();
         questionText.clear();
         optionsList.clear();
         FocusScope.of(context).unfocus();
@@ -110,8 +108,7 @@ class _DecisionPageState extends State<DecisionPage> {
   Widget animateText() {
     return dText = dText
         .animate(
-          onPlay: (animationController) => animationController.loop(count: 3),
-          // onComplete: (animationController) => animationController.reset(),
+          onPlay: (controller) => controller.loop(count: 3),
         )
         .fade(duration: 1000.ms)
         .tint(color: midnightColour)
