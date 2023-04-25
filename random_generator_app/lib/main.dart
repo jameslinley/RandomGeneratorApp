@@ -41,23 +41,20 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Random Generator'),
-      // ),
       body: IndexedStack(index: currentPage, children: pages),
-      bottomNavigationBar: NavigationBar(
-        destinations: const [
-          NavigationDestination(
-              icon: Icon(Icons.psychology), label: 'Decisions'),
-          NavigationDestination(icon: Icon(Icons.numbers), label: 'Number'),
-        ],
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPage = index;
-          });
-        },
-        selectedIndex: currentPage,
-      ),
+      // bottomNavigationBar: NavigationBar(
+      //   destinations: const [
+      //     NavigationDestination(
+      //         icon: Icon(Icons.psychology), label: 'Decisions'),
+      //     NavigationDestination(icon: Icon(Icons.numbers), label: 'Number'),
+      //   ],
+      //   onDestinationSelected: (int index) {
+      //     setState(() {
+      //       currentPage = index;
+      //     });
+      //   },
+      //   selectedIndex: currentPage,
+      // ),
     );
   }
 }
