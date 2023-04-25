@@ -29,7 +29,7 @@ class _DecisionPageState extends State<DecisionPage> {
 
   final _controller = TextEditingController();
   TextEditingController questionText = TextEditingController();
-  var titleText = TextEditingController(text: 'Random Generator');
+  var titleText = TextEditingController(text: 'Decision Generator');
   Random r = Random();
   Color midnightColour = const Color.fromARGB(255, 76, 99, 109);
   Color mintGreenColour = const Color.fromARGB(255, 199, 218, 201);
@@ -197,6 +197,10 @@ class _DecisionPageState extends State<DecisionPage> {
                     ),
                   ),
                 ),
+                onSubmitted: (value) {
+                  moveToTitle(questionText.text);
+                  questionText.clear();
+                },
               ),
             ),
             ConstrainedBox(
@@ -227,11 +231,6 @@ class _DecisionPageState extends State<DecisionPage> {
             const SizedBox(
               height: 10,
             ),
-            // const Divider(
-            //   thickness: 1,
-            //   color: Colors.blueGrey,
-            //   height: 5,
-            // ),
             Expanded(
               child: Container(
                 decoration: BoxDecoration(boxShadow: <BoxShadow>[
@@ -252,11 +251,6 @@ class _DecisionPageState extends State<DecisionPage> {
                 ),
               ),
             ),
-            // const Divider(
-            //   thickness: 1,
-            //   color: Colors.blueGrey,
-            //   height: 5,
-            // ),
             const SizedBox(
               height: 10,
             ),
@@ -304,16 +298,3 @@ class _DecisionPageState extends State<DecisionPage> {
     );
   }
 }
-
-
-
-
-// onComplete: (animationController) =>
-//               _animationController.addStatusListener(
-//             (status) async {
-//               if (status == AnimationStatus.completed) {
-//                 Navigator.pop(context);
-//                 _animationController.reset();
-//               }
-//             },
-//           ),
