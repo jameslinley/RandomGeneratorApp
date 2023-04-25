@@ -203,6 +203,11 @@ class _DecisionPageState extends State<DecisionPage> {
                   moveToTitle(questionText.text);
                   questionText.clear();
                 },
+                // validator: (value) {
+                //   if (value!.isEmpty) {
+                //     return "Field cannot be empty.";
+                //   }
+                // },
               ),
             ),
             ConstrainedBox(
