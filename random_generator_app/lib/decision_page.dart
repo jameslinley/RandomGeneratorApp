@@ -170,7 +170,7 @@ class _DecisionPageState extends State<DecisionPage> {
             Container(
               margin: const EdgeInsets.all(5),
               padding: const EdgeInsets.all(5),
-              child: TextField(
+              child: TextFormField(
                 style: const TextStyle(fontSize: 18),
                 controller: questionText,
                 decoration: InputDecoration(
@@ -180,7 +180,8 @@ class _DecisionPageState extends State<DecisionPage> {
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: burntOrangeColour),
                     borderRadius: BorderRadius.circular(15),
-                  ), //change border properties
+                  ),
+                  // errorText: , //change border properties
                   labelText: 'Enter your question',
                   labelStyle: TextStyle(
                       color: midnightColour,
@@ -197,7 +198,8 @@ class _DecisionPageState extends State<DecisionPage> {
                     ),
                   ),
                 ),
-                onSubmitted: (value) {
+                textInputAction: TextInputAction.done,
+                onFieldSubmitted: (value) {
                   moveToTitle(questionText.text);
                   questionText.clear();
                 },
