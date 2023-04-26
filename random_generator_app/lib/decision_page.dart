@@ -29,7 +29,7 @@ class _DecisionPageState extends State<DecisionPage> {
 
   final _controller = TextEditingController();
   TextEditingController questionText = TextEditingController();
-  bool isVisible = false;
+  bool isVisible = true;
   var titleText = TextEditingController(text: 'Decision Generator');
   Random r = Random();
   Color midnightColour = const Color.fromARGB(255, 76, 99, 109);
