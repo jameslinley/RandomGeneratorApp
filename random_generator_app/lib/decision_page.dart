@@ -29,6 +29,7 @@ class _DecisionPageState extends State<DecisionPage> {
 
   final _controller = TextEditingController();
   TextEditingController questionText = TextEditingController();
+  bool isVisible = false;
   var titleText = TextEditingController(text: 'Decision Generator');
   Random r = Random();
   Color midnightColour = const Color.fromARGB(255, 76, 99, 109);
@@ -94,7 +95,8 @@ class _DecisionPageState extends State<DecisionPage> {
         questionText.clear();
         optionsList.clear();
         FocusScope.of(context).unfocus();
-        titleText.text = 'Random Generator';
+        titleText.text = 'Decision Generator';
+        isVisible = true;
       },
     );
   }
@@ -126,6 +128,7 @@ class _DecisionPageState extends State<DecisionPage> {
     setState(() {
       titleText.text = s;
       FocusScope.of(context).unfocus();
+      isVisible = false;
     });
   }
 
@@ -170,44 +173,47 @@ class _DecisionPageState extends State<DecisionPage> {
             Container(
               margin: const EdgeInsets.all(5),
               padding: const EdgeInsets.all(5),
-              child: TextFormField(
-                style: const TextStyle(fontSize: 18),
-                controller: questionText,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: oceanBlueColour),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: burntOrangeColour),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  // errorText: , //change border properties
-                  labelText: 'Enter your question',
-                  labelStyle: TextStyle(
-                      color: midnightColour,
-                      fontStyle: FontStyle.italic,
-                      fontSize: 16),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      moveToTitle(questionText.text);
-                      questionText.clear();
-                    },
-                    icon: Icon(
-                      Icons.send,
-                      color: midnightColour,
+              child: Visibility(
+                visible: isVisible,
+                child: TextFormField(
+                  style: const TextStyle(fontSize: 18),
+                  controller: questionText,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: oceanBlueColour),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: burntOrangeColour),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    // errorText: , //change border properties
+                    labelText: 'Enter your question',
+                    labelStyle: TextStyle(
+                        color: midnightColour,
+                        fontStyle: FontStyle.italic,
+                        fontSize: 16),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        moveToTitle(questionText.text);
+                        questionText.clear();
+                      },
+                      icon: Icon(
+                        Icons.send,
+                        color: midnightColour,
+                      ),
                     ),
                   ),
+                  textInputAction: TextInputAction.done,
+                  onFieldSubmitted: (value) {
+                    moveToTitle(questionText.text);
+                    questionText.clear();
+                  },
+                  // validator: (value) {
+                  //   if (value!.isEmpty) {
+                  //     return "Field cannot be empty.";
+                  //   }
+                  // },
                 ),
-                textInputAction: TextInputAction.done,
-                onFieldSubmitted: (value) {
-                  moveToTitle(questionText.text);
-                  questionText.clear();
-                },
-                // validator: (value) {
-                //   if (value!.isEmpty) {
-                //     return "Field cannot be empty.";
-                //   }
-                // },
               ),
             ),
             ConstrainedBox(

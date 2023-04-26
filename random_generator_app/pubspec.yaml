@@ -49,20 +49,20 @@ dev_dependencies:
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/app_icon.png"
+  image_path: "assets/app_icon_transparent.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
   web:
     generate: true
-    image_path: "assets/app_icon.png"
-    background_color: "#4C636D"
+    image_path: "assets/app_icon_transparent.png"
+    background_color: "#hexcode"
     theme_color: "#hexcode"
   windows:
     generate: true
-    image_path: "assets/app_icon.png"
+    image_path: "assets/app_icon_transparent.png"
     icon_size: 48 # min:48, max:256, default: 48
   macos:
     generate: true
-    image_path: "assets/app_icon.png"
+    image_path: "assets/app_icon_transparent.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
