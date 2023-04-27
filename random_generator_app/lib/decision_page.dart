@@ -25,12 +25,13 @@ class _DecisionPageState extends State<DecisionPage> {
       color: Color.fromARGB(255, 76, 99, 109),
     ),
   );
-  // String decisionTxt = "...";
 
   final _controller = TextEditingController();
-  TextEditingController questionText = TextEditingController();
-  bool isVisible = true;
+  TextEditingController inputText = TextEditingController();
+  bool isVisibleTFF = true;
+  bool isVisibleText = false;
   var titleText = TextEditingController(text: 'Decision Generator');
+  var questionText = TextEditingController();
   Random r = Random();
   Color midnightColour = const Color.fromARGB(255, 76, 99, 109);
   Color mintGreenColour = const Color.fromARGB(255, 199, 218, 201);
@@ -73,7 +74,7 @@ class _DecisionPageState extends State<DecisionPage> {
   }
 
   //method to generate an option at random from list of options
-  void randomDecision() {
+  void generateDecision() {
     setState(
       () {
         String s = dText.toString();
@@ -92,11 +93,12 @@ class _DecisionPageState extends State<DecisionPage> {
     setState(
       () {
         dText = formatText('...');
-        questionText.clear();
+        inputText.clear();
         optionsList.clear();
         FocusScope.of(context).unfocus();
         titleText.text = 'Decision Generator';
-        isVisible = true;
+        isVisibleTFF = true;
+        isVisibleText = false;
       },
     );
   }
@@ -104,7 +106,7 @@ class _DecisionPageState extends State<DecisionPage> {
   Widget formatText(String s) {
     return dText = Text(
       s,
-      style: TextStyle(fontSize: 35, color: midnightColour),
+      style: TextStyle(fontSize: 30, color: midnightColour),
     );
   }
 
@@ -124,11 +126,12 @@ class _DecisionPageState extends State<DecisionPage> {
     return value;
   }
 
-  void moveToTitle(String s) {
+  void swapText(String s) {
     setState(() {
-      titleText.text = s;
+      questionText.text = s;
       FocusScope.of(context).unfocus();
-      isVisible = false;
+      isVisibleTFF = false;
+      isVisibleText = true;
     });
   }
 
@@ -138,6 +141,7 @@ class _DecisionPageState extends State<DecisionPage> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         appBar: AppBar(
+          elevation: 5,
           title: Text(
             titleText.text,
             style: const TextStyle(
@@ -168,17 +172,18 @@ class _DecisionPageState extends State<DecisionPage> {
         ),
         body: Column(
           children: [
-            const SizedBox(
-              height: 10,
+            Divider(
+              height: 5,
+              color: Colors.black,
             ),
             Container(
               margin: const EdgeInsets.all(5),
               padding: const EdgeInsets.all(5),
               child: Visibility(
-                visible: isVisible,
+                visible: isVisibleTFF,
                 child: TextFormField(
                   style: const TextStyle(fontSize: 18),
-                  controller: questionText,
+                  controller: inputText,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: oceanBlueColour),
@@ -196,11 +201,11 @@ class _DecisionPageState extends State<DecisionPage> {
                     labelStyle: TextStyle(
                         color: midnightColour,
                         fontStyle: FontStyle.italic,
-                        fontSize: 16),
+                        fontSize: 12),
                     suffixIcon: IconButton(
                       onPressed: () {
-                        moveToTitle(questionText.text);
-                        questionText.clear();
+                        swapText(inputText.text);
+                        inputText.clear();
                       },
                       icon: Icon(
                         Icons.send,
@@ -210,8 +215,8 @@ class _DecisionPageState extends State<DecisionPage> {
                   ),
                   textInputAction: TextInputAction.done,
                   onFieldSubmitted: (value) {
-                    moveToTitle(questionText.text);
-                    questionText.clear();
+                    swapText(inputText.text);
+                    inputText.clear();
                   },
                   // validator: (value) {
                   //   if (value!.isEmpty) {
@@ -220,6 +225,25 @@ class _DecisionPageState extends State<DecisionPage> {
                   // },
                 ),
               ),
+            ),
+            Container(
+              // height: 5,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(5),
+              child: Visibility(
+                visible: isVisibleText,
+                child: Text(
+                  questionText.text,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 25,
+                  ),
+                ),
+              ),
+            ),
+            Divider(
+              height: 5,
+              color: Colors.black,
             ),
             ConstrainedBox(
               constraints: const BoxConstraints(minWidth: 100, minHeight: 24),
@@ -233,7 +257,7 @@ class _DecisionPageState extends State<DecisionPage> {
                 label: const Text(
                   'Enter option',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     color: Colors.black,
                   ),
                 ),
@@ -285,12 +309,12 @@ class _DecisionPageState extends State<DecisionPage> {
                 child: const Text(
                   'Generate',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     color: Colors.black,
                   ),
                 ),
                 onPressed: () {
-                  randomDecision();
+                  generateDecision();
                 },
               ),
             ),
