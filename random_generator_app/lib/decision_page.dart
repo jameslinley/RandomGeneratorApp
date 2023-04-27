@@ -142,6 +142,7 @@ class _DecisionPageState extends State<DecisionPage> {
             titleText.text,
             style: const TextStyle(
               color: Colors.black,
+              fontSize: 25,
             ),
           ),
           centerTitle: true,
