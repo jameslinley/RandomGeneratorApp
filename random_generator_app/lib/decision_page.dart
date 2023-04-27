@@ -217,7 +217,7 @@ class _DecisionPageState extends State<DecisionPage> {
               ),
             ),
             ConstrainedBox(
-              constraints: const BoxConstraints(minWidth: 100, minHeight: 40),
+              constraints: const BoxConstraints(minWidth: 100, minHeight: 24),
               child: ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.all(10),
