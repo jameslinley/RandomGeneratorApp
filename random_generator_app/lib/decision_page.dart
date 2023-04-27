@@ -187,6 +187,10 @@ class _DecisionPageState extends State<DecisionPage> {
                       borderSide: BorderSide(color: burntOrangeColour),
                       borderRadius: BorderRadius.circular(15),
                     ),
+                    errorBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.red),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                     // errorText: , //change border properties
                     labelText: 'Enter your question',
                     labelStyle: TextStyle(
