@@ -3,7 +3,7 @@
     "short_name": "random_generator_app",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#4C636D",
+    "background_color": "#hexcode",
     "theme_color": "#hexcode",
     "description": "A new Flutter project.",
     "orientation": "portrait-primary",
