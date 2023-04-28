@@ -33,7 +33,11 @@ class DialogBox extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            TextField(
+            TextFormField(
+              // textInputAction: TextInputAction.done,
+              // onFieldSubmitted: (value) {
+              //   onSave;
+              // },
               autofocus: true,
               controller: controller,
               style: const TextStyle(fontSize: 20),
@@ -54,7 +58,10 @@ class DialogBox extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                MyButton(text: "Add", onPressed: onSave),
+                MyButton(
+                  text: "Add",
+                  onPressed: onSave,
+                ),
                 const SizedBox(
                   width: 10,
                 ),
