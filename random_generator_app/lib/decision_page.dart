@@ -39,6 +39,7 @@ class _DecisionPageState extends State<DecisionPage> {
   Color burntOrangeColour = const Color.fromARGB(255, 234, 129, 49);
   Color blushColour = const Color.fromARGB(255, 226, 218, 215);
   Color lilacColour = const Color.fromARGB(255, 214, 184, 218);
+  Color britishRacingGreenColour = const Color.fromARGB(255, 0, 66, 37);
 
   List optionsList = [];
 
@@ -141,7 +142,7 @@ class _DecisionPageState extends State<DecisionPage> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          elevation: 5,
+          elevation: 3,
           title: Text(
             titleText.text,
             style: const TextStyle(
@@ -172,15 +173,29 @@ class _DecisionPageState extends State<DecisionPage> {
         ),
         body: Column(
           children: [
-            Divider(
-              height: 5,
-              color: Colors.black,
+            const SizedBox(
+              height: 7,
             ),
-            Container(
-              margin: const EdgeInsets.all(5),
-              padding: const EdgeInsets.all(5),
-              child: Visibility(
-                visible: isVisibleTFF,
+            if (isVisibleText)
+              Container(
+                // color: Colors.white,
+                alignment: Alignment.center,
+                margin: const EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
+                // padding: const EdgeInsets.all(5),
+                child: Text(
+                  questionText.text,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 25,
+                  ),
+                ),
+              ),
+            if (isVisibleTFF)
+              Container(
+                // color: Colors.white,
+                margin: const EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 child: TextFormField(
                   style: const TextStyle(fontSize: 18),
                   controller: inputText,
@@ -225,26 +240,6 @@ class _DecisionPageState extends State<DecisionPage> {
                   // },
                 ),
               ),
-            ),
-            Container(
-              // height: 5,
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(5),
-              child: Visibility(
-                visible: isVisibleText,
-                child: Text(
-                  questionText.text,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
-            ),
-            Divider(
-              height: 5,
-              color: Colors.black,
-            ),
             ConstrainedBox(
               constraints: const BoxConstraints(minWidth: 100, minHeight: 24),
               child: ElevatedButton.icon(
