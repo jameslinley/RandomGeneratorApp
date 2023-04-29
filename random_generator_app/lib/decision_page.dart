@@ -150,7 +150,7 @@ class _DecisionPageState extends State<DecisionPage> {
               fontSize: 25,
             ),
           ),
-          centerTitle: true,
+          centerTitle: false, //true
           actions: [
             IconButton(
               onPressed: refreshPage,
@@ -159,11 +159,11 @@ class _DecisionPageState extends State<DecisionPage> {
             )
           ],
           backgroundColor: oceanBlueColour,
-          leading: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.dark_mode),
-            color: Colors.black,
-          ),
+          // leading: IconButton(
+          //   onPressed: () {},
+          //   icon: const Icon(Icons.dark_mode),
+          //   color: Colors.black,
+          // ),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(10),
